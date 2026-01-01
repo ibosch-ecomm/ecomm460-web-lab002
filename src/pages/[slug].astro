@@ -1,26 +1,43 @@
 ---
-import { getPageBySlug } from '../lib/graphql';
+import { getPages, getPageBySlug } from '../lib/graphql';
 import { cleanDiviShortcodes } from '../utils/cleanDivi';
 import ContentLayout from '../layouts/ContentLayout.astro';
 
-const { slug } = Astro.params;
+export async function getStaticPaths() {
+  try {
+    const data = await getPages();
+    
+    if (!data?.pages?.edges) {
+      return [];
+    }
 
-let page = null;
-let error = null;
-
-try {
-  const data = await getPageBySlug(slug);
-  page = data?.page;
-  
-  if (!page) {
-    return Astro.redirect('/404');
+    return data.pages.edges.map(({ node }) => ({
+      params: { slug: node.slug },
+      props: { page: node }
+    }));
+  } catch (error) {
+    console.error('Error generating static paths:', error);
+    return [];
   }
-} catch (err) {
-  console.error('Error fetching page:', err);
-  error = err;
-  return Astro.redirect('/404');
 }
 
+interface Props {
+  page: {
+    id: string;
+    title: string;
+    slug: string;
+    content: string;
+    excerpt: string;
+    featuredImage?: {
+      node: {
+        sourceUrl: string;
+        altText: string;
+      };
+    };
+  };
+}
+
+const { page } = Astro.props;
 const cleanedContent = cleanDiviShortcodes(page.content);
 ---
 

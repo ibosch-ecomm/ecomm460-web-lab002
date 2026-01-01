@@ -1,26 +1,49 @@
 ---
-import { getPostBySlug } from '../../lib/graphql';
+import { getPosts, getPostBySlug } from '../../lib/graphql';
 import { cleanDiviShortcodes } from '../../utils/cleanDivi';
 import ContentLayout from '../../layouts/ContentLayout.astro';
 
-const { slug } = Astro.params;
+export async function getStaticPaths() {
+  try {
+    const data = await getPosts();
+    
+    if (!data?.posts?.edges) {
+      return [];
+    }
 
-let post = null;
-let error = null;
-
-try {
-  const data = await getPostBySlug(slug);
-  post = data?.post;
-  
-  if (!post) {
-    return Astro.redirect('/404');
+    return data.posts.edges.map(({ node }) => ({
+      params: { slug: node.slug },
+      props: { post: node }
+    }));
+  } catch (error) {
+    console.error('Error generating static paths for blog:', error);
+    return [];
   }
-} catch (err) {
-  console.error('Error fetching post:', err);
-  error = err;
-  return Astro.redirect('/404');
 }
 
+interface Props {
+  post: {
+    id: string;
+    title: string;
+    slug: string;
+    content: string;
+    excerpt: string;
+    date: string;
+    author?: {
+      node: {
+        name: string;
+      };
+    };
+    featuredImage?: {
+      node: {
+        sourceUrl: string;
+        altText: string;
+      };
+    };
+  };
+}
+
+const { post } = Astro.props;
 const cleanedContent = cleanDiviShortcodes(post.content);
 const publishDate = new Date(post.date).toLocaleDateString('es-ES', {
   year: 'numeric',
