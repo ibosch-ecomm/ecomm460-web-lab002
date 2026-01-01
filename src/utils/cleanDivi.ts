@@ -5,14 +5,67 @@
 export function cleanDiviShortcodes(content: string): string {
   if (!content) return '';
 
-  // Remover shortcodes de Divi
-  let cleaned = content.replace(/\[et_pb_[^\]]*\]/g, '');
+  let cleaned = content;
 
-  // Remover otros shortcodes comunes de WordPress
-  cleaned = cleaned.replace(/\[[^\]]*\]/g, '');
+  // Primero, remover las etiquetas de wrapper de Divi
+  cleaned = cleaned.replace(/<div class="et-l[^"]*"[^>]*>/g, '');
+  cleaned = cleaned.replace(/<div class="et_builder_inner_content[^"]*"[^>]*>/g, '');
+  cleaned = cleaned.replace(/<\/div>/g, '');
 
-  // Remover espacios en blanco excesivos
-  cleaned = cleaned.replace(/\n\s*\n/g, '\n');
+  // Remover shortcodes de apertura de Divi preservando el contenido entre ellos
+  cleaned = cleaned.replace(/\[et_pb_section[^\]]*\]/g, '');
+  cleaned = cleaned.replace(/\[et_pb_row[^\]]*\]/g, '');
+  cleaned = cleaned.replace(/\[et_pb_column[^\]]*\]/g, '');
+  
+  // Remover shortcodes de cierre
+  cleaned = cleaned.replace(/\[\/et_pb_section\]/g, '');
+  cleaned = cleaned.replace(/\[\/et_pb_row\]/g, '');
+  cleaned = cleaned.replace(/\[\/et_pb_column\]/g, '');
+  
+  // Procesar módulos de texto preservando el contenido
+  cleaned = cleaned.replace(/\[et_pb_text[^\]]*\]([\s\S]*?)\[\/et_pb_text\]/g, '$1');
+  
+  // Procesar módulos de imagen
+  cleaned = cleaned.replace(/\[et_pb_image[^\]]*src="([^"]*)"[^\]]*\]/g, '<img src="$1" alt="" />');
+  
+  // Procesar módulos de botón
+  cleaned = cleaned.replace(/\[et_pb_button[^\]]*button_url="([^"]*)"[^\]]*button_text="([^"]*)"[^\]]*\]/g, '<a href="$1" class="btn-primary">$2</a>');
+  
+  // Procesar módulos de código
+  cleaned = cleaned.replace(/\[et_pb_code[^\]]*\]([\s\S]*?)\[\/et_pb_code\]/g, '$1');
+  
+  // Procesar módulos de acordeón y toggle
+  cleaned = cleaned.replace(/\[et_pb_accordion[^\]]*\]([\s\S]*?)\[\/et_pb_accordion\]/g, '$1');
+  cleaned = cleaned.replace(/\[et_pb_accordion_item[^\]]*title="([^"]*)"[^\]]*\]([\s\S]*?)\[\/et_pb_accordion_item\]/g, '<h3>$1</h3>$2');
+  
+  // Procesar módulos de tabs
+  cleaned = cleaned.replace(/\[et_pb_tabs[^\]]*\]([\s\S]*?)\[\/et_pb_tabs\]/g, '$1');
+  cleaned = cleaned.replace(/\[et_pb_tab[^\]]*title="([^"]*)"[^\]]*\]([\s\S]*?)\[\/et_pb_tab\]/g, '<h3>$1</h3>$2');
+  
+  // Remover cualquier otro shortcode de Divi que quede
+  cleaned = cleaned.replace(/\[et_pb_[^\]]*\]/g, '');
+  cleaned = cleaned.replace(/\[\/et_pb_[^\]]*\]/g, '');
+  
+  // Remover shortcodes genéricos de WordPress (pero preservar contenido)
+  cleaned = cleaned.replace(/\[([a-zA-Z_]+)[^\]]*\]([\s\S]*?)\[\/\1\]/g, '$2');
+  cleaned = cleaned.replace(/\[([a-zA-Z_]+)[^\]]*\]/g, '');
+
+  // Limpiar entidades HTML mal formadas
+  cleaned = cleaned.replace(/&#8243;/g, '"');
+  cleaned = cleaned.replace(/&#8217;/g, "'");
+  cleaned = cleaned.replace(/&#8216;/g, "'");
+  cleaned = cleaned.replace(/&#8220;/g, '"');
+  cleaned = cleaned.replace(/&#8221;/g, '"');
+  cleaned = cleaned.replace(/&raquo;/g, '»');
+  cleaned = cleaned.replace(/&laquo;/g, '«');
+
+  // Remover espacios en blanco excesivos pero mantener estructura
+  cleaned = cleaned.replace(/\n\s*\n\s*\n/g, '\n\n');
+  cleaned = cleaned.replace(/\s{3,}/g, ' ');
+
+  // Remover divs vacíos
+  cleaned = cleaned.replace(/<div>\s*<\/div>/g, '');
+  cleaned = cleaned.replace(/<p>\s*<\/p>/g, '');
 
   return cleaned.trim();
 }
@@ -23,44 +76,16 @@ export function cleanDiviShortcodes(content: string): string {
 export function sanitizeHTML(html: string): string {
   if (!html) return '';
 
-  const allowedTags = ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre'];
+  // Lista de etiquetas permitidas
+  const allowedTags = ['p', 'br', 'strong', 'em', 'u', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'a', 'img', 'blockquote', 'code', 'pre', 'div', 'span'];
 
-  // Crear un elemento temporal para parsear HTML
-  const temp = document.createElement('div');
-  temp.innerHTML = html;
+  // Remover scripts y estilos inline
+  let sanitized = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+  sanitized = sanitized.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+  sanitized = sanitized.replace(/on\w+="[^"]*"/gi, '');
+  sanitized = sanitized.replace(/on\w+='[^']*'/gi, '');
 
-  // Remover scripts y estilos
-  const scripts = temp.querySelectorAll('script, style');
-  scripts.forEach(script => script.remove());
-
-  // Limpiar atributos peligrosos
-  const allElements = temp.querySelectorAll('*');
-  allElements.forEach(element => {
-    // Remover todos los atributos excepto los permitidos
-    const attrs = Array.from(element.attributes);
-    attrs.forEach(attr => {
-      if (!['href', 'src', 'alt', 'title'].includes(attr.name)) {
-        element.removeAttribute(attr.name);
-      }
-    });
-
-    // Validar URLs en href y src
-    if (element.hasAttribute('href')) {
-      const href = element.getAttribute('href');
-      if (href && !href.startsWith('http') && !href.startsWith('/') && !href.startsWith('#')) {
-        element.removeAttribute('href');
-      }
-    }
-
-    if (element.hasAttribute('src')) {
-      const src = element.getAttribute('src');
-      if (src && !src.startsWith('http') && !src.startsWith('/')) {
-        element.removeAttribute('src');
-      }
-    }
-  });
-
-  return temp.innerHTML;
+  return sanitized;
 }
 
 /**
@@ -69,9 +94,20 @@ export function sanitizeHTML(html: string): string {
 export function extractPlainText(html: string): string {
   if (!html) return '';
 
-  const temp = document.createElement('div');
-  temp.innerHTML = html;
-  return temp.textContent || temp.innerText || '';
+  // Remover todas las etiquetas HTML
+  const plainText = html.replace(/<[^>]*>/g, ' ');
+  
+  // Decodificar entidades HTML
+  const decoded = plainText
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'");
+  
+  // Limpiar espacios múltiples
+  return decoded.replace(/\s+/g, ' ').trim();
 }
 
 /**

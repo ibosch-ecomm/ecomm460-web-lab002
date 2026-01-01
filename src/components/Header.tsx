@@ -80,31 +80,46 @@ export default function Header({ menuItems = [] }: HeaderProps) {
 
             {/* Desktop Menu */}
             <nav className="hidden md:flex items-center space-x-1">
-              {orderedMenuItems.map(item => (
-                <div key={item.id} className="relative group">
-                  <a
-                    href={item.url || '#'}
-                    className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 font-medium"
-                  >
-                    {item.label}
-                  </a>
+              {orderedMenuItems.map(item => {
+                const hasSubmenu = item.childItems?.edges && item.childItems.edges.length > 0;
+                
+                return (
+                  <div key={item.id} className="relative group">
+                    {hasSubmenu ? (
+                      <button
+                        className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 font-medium flex items-center space-x-1"
+                      >
+                        <span>{item.label}</span>
+                        <svg className="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                    ) : (
+                      <a
+                        href={item.url || '#'}
+                        className="px-4 py-2 rounded-lg text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all duration-200 font-medium"
+                      >
+                        {item.label}
+                      </a>
+                    )}
 
-                  {/* Desktop Submenu */}
-                  {item.childItems?.edges && item.childItems.edges.length > 0 && (
-                    <div className="absolute left-0 mt-0 w-48 bg-white rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
-                      {item.childItems.edges.map(({ node: subItem }) => (
-                        <a
-                          key={subItem.id}
-                          href={subItem.url || '#'}
-                          className="block px-4 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
-                        >
-                          {subItem.label}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+                    {/* Desktop Submenu */}
+                    {hasSubmenu && (
+                      <div className="absolute left-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2 z-50">
+                        {item.childItems.edges.map(({ node: subItem }) => (
+                          <a
+                            key={subItem.id}
+                            href={subItem.url || '#'}
+                            className="block px-4 py-2.5 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200"
+                          >
+                            {subItem.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
 
             {/* CTA Button */}
