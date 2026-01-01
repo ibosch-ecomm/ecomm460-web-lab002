@@ -1,0 +1,96 @@
+---
+import { getPosts, getPostBySlug } from '../../lib/graphql';
+import { cleanDiviShortcodes } from '../../utils/cleanDivi';
+import ContentLayout from '../../layouts/ContentLayout.astro';
+
+export async function getStaticPaths() {
+  try {
+    const data = await getPosts();
+    
+    if (!data?.posts?.edges) {
+      return [];
+    }
+
+    return data.posts.edges.map(({ node }) => ({
+      params: { slug: node.slug },
+      props: { post: node }
+    }));
+  } catch (error) {
+    console.error('Error generating static paths for blog:', error);
+    return [];
+  }
+}
+
+interface Props {
+  post: {
+    id: string;
+    title: string;
+    slug: string;
+    content: string;
+    excerpt: string;
+    date: string;
+    author?: {
+      node: {
+        name: string;
+      };
+    };
+    featuredImage?: {
+      node: {
+        sourceUrl: string;
+        altText: string;
+      };
+    };
+  };
+}
+
+const { post } = Astro.props;
+const cleanedContent = cleanDiviShortcodes(post.content);
+const publishDate = new Date(post.date).toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<ContentLayout 
+  title={post.title}
+  description={post.excerpt}
+  image={post.featuredImage?.node?.sourceUrl}
+>
+  <!-- Post Meta -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8 pb-8 border-b border-gray-200">
+    <div class="flex items-center space-x-4">
+      <span class="text-sm text-blue-600 font-semibold">{publishDate}</span>
+      {post.author?.node?.name && (
+        <>
+          <span class="text-gray-300">•</span>
+          <span class="text-sm text-gray-600">Por {post.author.node.name}</span>
+        </>
+      )}
+    </div>
+  </div>
+
+  <!-- Featured Image -->
+  {post.featuredImage && (
+    <div class="mb-8">
+      <img 
+        src={post.featuredImage.node.sourceUrl}
+        alt={post.featuredImage.node.altText || post.title}
+        class="w-full rounded-2xl shadow-medium"
+      />
+    </div>
+  )}
+
+  <!-- Content -->
+  <div class="prose prose-lg max-w-none" set:html={cleanedContent} />
+
+  <!-- Back to Blog -->
+  <div class="mt-12 pt-8 border-t border-gray-200">
+    <a href="/blog" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Volver al Blog
+    </a>
+  </div>
+</ContentLayout>

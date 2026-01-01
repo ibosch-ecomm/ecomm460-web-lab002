@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Página no encontrada - eComm360">
+  <section class="py-32 md:py-48 bg-white">
+    <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+      <div class="mb-8">
+        <h1 class="text-6xl md:text-8xl font-bold text-blue-600 mb-4">404</h1>
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Página no encontrada
+        </h2>
+        <p class="text-lg text-gray-600 mb-8">
+          Lo sentimos, la página que buscas no existe o ha sido movida.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/" class="btn-primary text-lg">Ir a Inicio</a>
+        <a href="/blog" class="btn-secondary text-lg">Ver Blog</a>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="mt-16 pt-16 border-t border-gray-200">
+        <h3 class="text-xl font-bold text-gray-900 mb-8">Páginas populares</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <a href="/" class="glass-container p-6 hover:shadow-medium transition-all duration-300">
+            <div class="text-3xl mb-3">🏠</div>
+            <h4 class="font-semibold text-gray-900 mb-2">Inicio</h4>
+            <p class="text-gray-600 text-sm">Descubre nuestras soluciones</p>
+          </a>
+          <a href="/blog" class="glass-container p-6 hover:shadow-medium transition-all duration-300">
+            <div class="text-3xl mb-3">📰</div>
+            <h4 class="font-semibold text-gray-900 mb-2">Blog</h4>
+            <p class="text-gray-600 text-sm">Lee nuestros últimos artículos</p>
+          </a>
+          <a href="#" class="glass-container p-6 hover:shadow-medium transition-all duration-300">
+            <div class="text-3xl mb-3">💬</div>
+            <h4 class="font-semibold text-gray-900 mb-2">Contacto</h4>
+            <p class="text-gray-600 text-sm">Ponte en contacto con nosotros</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

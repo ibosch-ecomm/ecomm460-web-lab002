@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  ecomm360:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ecomm360-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - GRAPHQL_ENDPOINT=https://web2025.ecomm360.net/graphql
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - ecomm360-network
+
+networks:
+  ecomm360-network:
+    driver: bridge

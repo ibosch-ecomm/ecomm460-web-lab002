@@ -1,16 +1,139 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Inicio - eComm360">
+  <!-- Hero Section -->
+  <section class="relative pt-20 pb-32 overflow-hidden">
+    <div class="absolute inset-0 tech-bg" />
+    
+    <div class="relative max-w-7xl mx-auto px-4 md:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Left Content -->
+        <div class="animate-fade-in-up">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            Soluciones de Comercio Electrónico
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+              de Próxima Generación
+            </span>
+          </h1>
+          
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Potencia tu negocio con eComm360. Plataforma integral diseñada para crecer sin límites, con herramientas avanzadas y soporte 24/7.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="btn-primary text-lg">Comenzar Ahora</button>
+            <button class="btn-secondary text-lg">Ver Demo</button>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-6 mt-12">
+            <div>
+              <p class="text-3xl font-bold text-blue-600">10K+</p>
+              <p class="text-gray-600 text-sm">Clientes Activos</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-blue-600">$500M+</p>
+              <p class="text-gray-600 text-sm">Volumen Procesado</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-blue-600">99.9%</p>
+              <p class="text-gray-600 text-sm">Disponibilidad</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual -->
+        <div class="relative hidden lg:block">
+          <div class="glass-container p-8">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
+                Pagos
+              </div>
+              <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
+                Inventario
+              </div>
+              <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
+                Analytics
+              </div>
+              <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
+                Reportes
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 md:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Características Principales
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Todo lo que necesitas para gestionar tu tienda online de forma eficiente
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            title: 'Gestión de Productos',
+            description: 'Administra tu catálogo completo con herramientas intuitivas y poderosas',
+            icon: '📦'
+          },
+          {
+            title: 'Procesamiento de Pagos',
+            description: 'Acepta múltiples métodos de pago de forma segura y confiable',
+            icon: '💳'
+          },
+          {
+            title: 'Análisis en Tiempo Real',
+            description: 'Obtén insights valiosos sobre el comportamiento de tus clientes',
+            icon: '📊'
+          },
+          {
+            title: 'Automatización',
+            description: 'Automatiza procesos repetitivos y ahorra tiempo valioso',
+            icon: '⚙️'
+          },
+          {
+            title: 'Integración Fácil',
+            description: 'Conecta con tus herramientas favoritas sin complicaciones',
+            icon: '🔗'
+          },
+          {
+            title: 'Soporte 24/7',
+            description: 'Nuestro equipo siempre está disponible para ayudarte',
+            icon: '🎧'
+          }
+        ].map((feature) => (
+          <div class="glass-container p-8 hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
+            <div class="text-4xl mb-4">{feature.icon}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+            <p class="text-gray-600">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 md:py-32 bg-gradient-to-r from-blue-600 to-cyan-500">
+    <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+        ¿Listo para transformar tu negocio?
+      </h2>
+      <p class="text-lg text-blue-100 mb-8">
+        Únete a miles de empresas que ya confían en eComm360
+      </p>
+      <button class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+        Solicitar Demo Gratuita
+      </button>
+    </div>
+  </section>
+</Layout>

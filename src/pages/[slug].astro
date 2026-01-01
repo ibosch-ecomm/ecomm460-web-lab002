@@ -1,0 +1,60 @@
+---
+import { getPages, getPageBySlug } from '../lib/graphql';
+import { cleanDiviShortcodes } from '../utils/cleanDivi';
+import ContentLayout from '../layouts/ContentLayout.astro';
+
+export async function getStaticPaths() {
+  try {
+    const data = await getPages();
+    
+    if (!data?.pages?.edges) {
+      return [];
+    }
+
+    return data.pages.edges.map(({ node }) => ({
+      params: { slug: node.slug },
+      props: { page: node }
+    }));
+  } catch (error) {
+    console.error('Error generating static paths:', error);
+    return [];
+  }
+}
+
+interface Props {
+  page: {
+    id: string;
+    title: string;
+    slug: string;
+    content: string;
+    excerpt: string;
+    featuredImage?: {
+      node: {
+        sourceUrl: string;
+        altText: string;
+      };
+    };
+  };
+}
+
+const { page } = Astro.props;
+const cleanedContent = cleanDiviShortcodes(page.content);
+---
+
+<ContentLayout 
+  title={page.title}
+  description={page.excerpt}
+  image={page.featuredImage?.node?.sourceUrl}
+>
+  {page.featuredImage && (
+    <div class="mb-8">
+      <img 
+        src={page.featuredImage.node.sourceUrl}
+        alt={page.featuredImage.node.altText || page.title}
+        class="w-full rounded-2xl shadow-medium"
+      />
+    </div>
+  )}
+
+  <div class="prose prose-lg max-w-none" set:html={cleanedContent} />
+</ContentLayout>
