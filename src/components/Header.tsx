@@ -28,7 +28,6 @@ export default function Header({ menuItems = [] }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Ordenar menú según el orden especificado
   const orderedMenuItems = React.useMemo(() => {
     const itemMap = new Map<string, MenuItem>();
     menuItems.forEach(item => {
@@ -42,7 +41,7 @@ export default function Header({ menuItems = [] }: HeaderProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -51,45 +50,21 @@ export default function Header({ menuItems = [] }: HeaderProps) {
 
   return (
     <>
-      {/* Header Flotante Sticky */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'py-3' : 'py-4'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div 
-            className={`rounded-2xl transition-all duration-300 ${
-              isScrolled ? 'px-6 py-3' : 'px-8 py-4'
-            }`}
-            style={{
-              background: isScrolled 
-                ? 'rgba(255, 255, 255, 0.95)' 
-                : 'rgba(255, 255, 255, 0.90)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
-              boxShadow: isScrolled 
-                ? '0 8px 32px rgba(27, 85, 133, 0.12)' 
-                : '0 4px 16px rgba(27, 85, 133, 0.08)',
-              border: '1px solid rgba(255, 255, 255, 0.3)'
-            }}
-          >
+      <header className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'top-2' : ''}`}>
+        <div className="max-w-6xl mx-auto px-4">
+          <div className={`bg-white/90 backdrop-blur-lg rounded-2xl shadow-lg border border-white/20 transition-all duration-300 ${isScrolled ? 'py-3 px-6' : 'py-4 px-8'}`}>
             <div className="flex items-center justify-between">
+              
               {/* Logo */}
-              <div className="flex-shrink-0">
-                <a href="/" className="flex items-center">
-                  <img 
-                    src="/images/logo-ecomm360-2026.png" 
-                    alt="eComm360" 
-                    className={`transition-all duration-300 ${
-                      isScrolled ? 'h-10' : 'h-12'
-                    }`}
-                    style={{ maxWidth: '200px' }}
-                  />
-                </a>
-              </div>
+              <a href="/" className="flex-shrink-0">
+                <img 
+                  src="/images/logo-ecomm360-2026.png" 
+                  alt="eComm360" 
+                  className={`transition-all duration-300 ${isScrolled ? 'h-9' : 'h-11'}`}
+                />
+              </a>
 
-              {/* Desktop Menu */}
+              {/* Desktop Navigation */}
               <nav className="hidden lg:flex items-center space-x-1">
                 {orderedMenuItems.map(item => {
                   const hasSubmenu = item.childItems?.edges && item.childItems.edges.length > 0;
@@ -97,83 +72,26 @@ export default function Header({ menuItems = [] }: HeaderProps) {
                   return (
                     <div key={item.id} className="relative group">
                       {hasSubmenu ? (
-                        <button
-                          className="px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                          style={{
-                            color: '#1B5585',
-                            fontFamily: "'Sora', sans-serif"
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.color = '#55C7DC';
-                            e.currentTarget.style.background = 'rgba(85, 199, 220, 0.1)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color = '#1B5585';
-                            e.currentTarget.style.background = 'transparent';
-                          }}
-                        >
-                          <span className="flex items-center space-x-1">
-                            <span>{item.label}</span>
-                            <svg 
-                              className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" 
-                              fill="none" 
-                              stroke="currentColor" 
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                          </span>
+                        <button className="px-3 py-2 text-sm font-medium text-blue-900 hover:text-cyan-500 hover:bg-cyan-50 rounded-lg transition-colors flex items-center gap-1">
+                          {item.label}
+                          <svg className="w-4 h-4 group-hover:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
                         </button>
                       ) : (
-                        <a
-                          href={item.url || '#'}
-                          className="px-4 py-2 rounded-lg font-medium transition-all duration-200"
-                          style={{
-                            color: '#1B5585',
-                            fontFamily: "'Sora', sans-serif"
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.color = '#55C7DC';
-                            e.currentTarget.style.background = 'rgba(85, 199, 220, 0.1)';
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.color = '#1B5585';
-                            e.currentTarget.style.background = 'transparent';
-                          }}
-                        >
+                        <a href={item.url} className="px-3 py-2 text-sm font-medium text-blue-900 hover:text-cyan-500 hover:bg-cyan-50 rounded-lg transition-colors">
                           {item.label}
                         </a>
                       )}
 
-                      {/* Desktop Submenu */}
+                      {/* Submenu */}
                       {hasSubmenu && (
-                        <div 
-                          className="absolute left-0 top-full mt-2 w-64 rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50"
-                          style={{
-                            background: 'rgba(255, 255, 255, 0.98)',
-                            backdropFilter: 'blur(16px)',
-                            WebkitBackdropFilter: 'blur(16px)',
-                            boxShadow: '0 10px 40px rgba(27, 85, 133, 0.15)',
-                            border: '1px solid rgba(255, 255, 255, 0.3)'
-                          }}
-                        >
+                        <div className="absolute left-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                           {item.childItems.edges.map(({ node: subItem }) => (
                             <a
                               key={subItem.id}
-                              href={subItem.url || '#'}
-                              className="block px-5 py-2.5 text-sm transition-all duration-200"
-                              style={{
-                                color: '#646464',
-                                fontFamily: "'Inter', sans-serif"
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.color = '#1B5585';
-                                e.currentTarget.style.background = 'rgba(85, 199, 220, 0.05)';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.color = '#646464';
-                                e.currentTarget.style.background = 'transparent';
-                              }}
+                              href={subItem.url}
+                              className="block px-4 py-2 text-sm text-gray-700 hover:bg-cyan-50 hover:text-cyan-600 transition-colors"
                             >
                               {subItem.label}
                             </a>
@@ -186,54 +104,24 @@ export default function Header({ menuItems = [] }: HeaderProps) {
               </nav>
 
               {/* CTA Button */}
-              <div className="hidden lg:flex items-center">
-                <a 
-                  href="/contacto" 
-                  className="px-6 py-2.5 rounded-lg font-semibold text-white transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, #1B5585 0%, #55C7DC 100%)',
-                    fontFamily: "'Sora', sans-serif"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(27, 85, 133, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  Contactar
-                </a>
-              </div>
+              <a 
+                href="/contacto" 
+                className="hidden lg:block px-5 py-2 bg-gradient-to-r from-blue-900 to-cyan-500 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all"
+              >
+                Contactar
+              </a>
 
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="lg:hidden flex flex-col space-y-1.5 p-2"
+                className="lg:hidden p-2"
                 aria-label="Menú"
               >
-                <span
-                  className="w-6 h-0.5 rounded transition-all duration-300"
-                  style={{
-                    background: '#1B5585',
-                    transform: isMobileMenuOpen ? 'rotate(45deg) translateY(8px)' : 'none'
-                  }}
-                />
-                <span
-                  className="w-6 h-0.5 rounded transition-all duration-300"
-                  style={{
-                    background: '#1B5585',
-                    opacity: isMobileMenuOpen ? 0 : 1
-                  }}
-                />
-                <span
-                  className="w-6 h-0.5 rounded transition-all duration-300"
-                  style={{
-                    background: '#1B5585',
-                    transform: isMobileMenuOpen ? 'rotate(-45deg) translateY(-8px)' : 'none'
-                  }}
-                />
+                <div className="w-6 h-5 flex flex-col justify-between">
+                  <span className={`w-full h-0.5 bg-blue-900 rounded transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                  <span className={`w-full h-0.5 bg-blue-900 rounded transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+                  <span className={`w-full h-0.5 bg-blue-900 rounded transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                </div>
               </button>
             </div>
           </div>
@@ -247,8 +135,8 @@ export default function Header({ menuItems = [] }: HeaderProps) {
         menuItems={orderedMenuItems}
       />
 
-      {/* Spacer para que el contenido no quede debajo del header */}
-      <div className={`transition-all duration-300 ${isScrolled ? 'h-20' : 'h-24'}`} />
+      {/* Spacer */}
+      <div className="h-24" />
     </>
   );
 }
