@@ -119,49 +119,94 @@ const { title, description = 'eComm360 - Soluciones de Comercio Electrónico', i
       }
 
       :global(.prose-content p) {
-        @apply relative pl-4 py-2 transition-all duration-300;
+        position: relative;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        transition: all 0.3s;
         border-left: 3px solid transparent;
       }
 
       :global(.prose-content p:hover) {
         border-left-color: var(--color-turquoise);
-        @apply bg-blue-50 bg-opacity-30;
+        background-color: rgba(239, 246, 255, 0.3);
       }
 
       :global(.prose-content h2) {
-        @apply text-3xl font-bold text-gray-900 mt-12 mb-6;
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #111827;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
       }
 
       :global(.prose-content h3) {
-        @apply text-2xl font-bold text-gray-900 mt-8 mb-4;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #111827;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
       }
 
       :global(.prose-content a) {
-        @apply text-blue-600 hover:text-blue-700 transition-colors;
+        color: #2563eb;
+        transition: color 0.2s;
+      }
+
+      :global(.prose-content a:hover) {
+        color: #1d4ed8;
       }
 
       :global(.prose-content ul) {
-        @apply list-disc list-inside space-y-2 text-gray-700;
+        list-style-type: disc;
+        list-style-position: inside;
+        color: #374151;
+      }
+
+      :global(.prose-content ul li) {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
       }
 
       :global(.prose-content ol) {
-        @apply list-decimal list-inside space-y-2 text-gray-700;
+        list-style-type: decimal;
+        list-style-position: inside;
+        color: #374151;
+      }
+
+      :global(.prose-content ol li) {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
       }
 
       :global(.prose-content blockquote) {
-        @apply border-l-4 border-blue-600 pl-4 py-2 italic text-gray-600;
+        border-left: 4px solid #2563eb;
+        padding-left: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-style: italic;
+        color: #4b5563;
       }
 
       :global(.prose-content code) {
-        @apply bg-gray-100 rounded px-2 py-1 text-sm font-mono text-gray-800;
+        background-color: #f3f4f6;
+        border-radius: 0.25rem;
+        padding: 0.125rem 0.5rem;
+        font-size: 0.875rem;
+        font-family: monospace;
+        color: #1f2937;
       }
 
       :global(.prose-content pre) {
-        @apply bg-gray-900 rounded-lg p-4 overflow-x-auto;
+        background-color: #111827;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        overflow-x: auto;
       }
 
       :global(.prose-content pre code) {
-        @apply text-gray-100 bg-transparent;
+        color: #f3f4f6;
+        background-color: transparent;
       }
     </style>
   </body>

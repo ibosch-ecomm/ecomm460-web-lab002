@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Variables CSS para colores corporativos */
 :root {
@@ -16,18 +16,23 @@ html {
 }
 
 body {
-  @apply bg-white text-gray-900 font-sans;
+  background-color: white;
+  color: #111827;
+  font-family: system-ui, -apple-system, sans-serif;
 }
 
 /* Tech Background - Grid y orbes de luz */
 .tech-bg {
-  @apply relative overflow-hidden;
+  position: relative;
+  overflow: hidden;
   background-color: #f8f9fa;
 }
 
 .tech-bg::before {
   content: '';
-  @apply absolute inset-0 pointer-events-none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background-image:
     linear-gradient(0deg, transparent 24%, rgba(85, 199, 220, 0.05) 25%, rgba(85, 199, 220, 0.05) 26%, transparent 27%, transparent 74%, rgba(85, 199, 220, 0.05) 75%, rgba(85, 199, 220, 0.05) 76%, transparent 77%, transparent),
     linear-gradient(90deg, transparent 24%, rgba(85, 199, 220, 0.05) 25%, rgba(85, 199, 220, 0.05) 26%, transparent 27%, transparent 74%, rgba(85, 199, 220, 0.05) 75%, rgba(85, 199, 220, 0.05) 76%, transparent 77%, transparent);
@@ -37,7 +42,9 @@ body {
 /* Orbes de luz en las esquinas */
 .tech-bg::after {
   content: '';
-  @apply absolute inset-0 pointer-events-none;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   background:
     radial-gradient(circle at 20% 80%, rgba(27, 85, 133, 0.08) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(85, 199, 220, 0.08) 0%, transparent 50%);
@@ -45,98 +52,189 @@ body {
 
 /* Tipografía */
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-gray-900;
+  font-weight: 700;
+  color: #111827;
 }
 
 h1 {
-  @apply text-4xl md:text-5xl lg:text-6xl;
+  font-size: 2.25rem;
 }
 
 h2 {
-  @apply text-3xl md:text-4xl;
+  font-size: 1.875rem;
 }
 
 h3 {
-  @apply text-2xl md:text-3xl;
+  font-size: 1.5rem;
 }
 
 h4 {
-  @apply text-xl md:text-2xl;
+  font-size: 1.25rem;
 }
 
 p {
-  @apply text-base md:text-lg leading-relaxed;
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.875rem; }
+  h4 { font-size: 1.5rem; }
+  p { font-size: 1.125rem; }
+}
+
+@media (min-width: 1024px) {
+  h1 { font-size: 3.75rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.875rem; }
 }
 
 /* Efecto Reading Guide */
 .reading-guide {
-  @apply relative pl-4 py-2 transition-all duration-300;
+  position: relative;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: all 0.3s;
   border-left: 3px solid transparent;
 }
 
 .reading-guide:hover {
   border-left-color: var(--color-turquoise);
-  @apply bg-blue-50 bg-opacity-30;
+  background-color: rgba(239, 246, 255, 0.3);
 }
 
 /* Contenedores con glassmorphism */
 .glass-container {
-  @apply rounded-2xl border border-white border-opacity-20 backdrop-blur-xl;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .glass-container-dark {
-  @apply rounded-2xl border border-white border-opacity-10 backdrop-blur-xl;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
   background: rgba(27, 85, 133, 0.05);
   box-shadow: 0 8px 32px rgba(27, 85, 133, 0.1);
 }
 
 /* Botones corporativos */
 .btn-primary {
-  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s;
   background-color: var(--color-navy);
   color: white;
 }
 
 .btn-primary:hover {
-  @apply shadow-lg transform -translate-y-0.5;
-  background-color: #143d5c;
+  box-shadow: 0 10px 25px rgba(27, 85, 133, 0.3);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300 border-2;
-  border-color: var(--color-navy);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s;
+  border: 2px solid var(--color-navy);
   color: var(--color-navy);
   background-color: transparent;
 }
 
 .btn-secondary:hover {
-  @apply shadow-lg transform -translate-y-0.5;
   background-color: var(--color-navy);
   color: white;
+  box-shadow: 0 10px 25px rgba(27, 85, 133, 0.3);
+  transform: translateY(-2px);
 }
 
 .btn-ghost {
-  @apply px-6 py-3 rounded-xl font-semibold transition-all duration-300;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s;
   color: var(--color-navy);
+  background-color: transparent;
 }
 
 .btn-ghost:hover {
   background-color: rgba(27, 85, 133, 0.1);
 }
 
-/* Sombras suaves */
+/* Sombras */
 .shadow-soft {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07), 0 10px 13px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .shadow-medium {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.shadow-strong {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* Espaciado */
+.container-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .container-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+  .section-padding {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* Enlaces */
+.link-primary {
+  color: #2563eb;
+  transition: color 0.2s;
+}
+
+.link-primary:hover {
+  color: #1d4ed8;
+}
+
+.link-secondary {
+  color: #374151;
+  transition: color 0.2s;
+}
+
+.link-secondary:hover {
+  color: #2563eb;
 }
 
 /* Animaciones */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -147,10 +245,14 @@ p {
   }
 }
 
-@keyframes slideInRight {
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateX(-50px);
   }
   to {
     opacity: 1;
@@ -158,46 +260,21 @@ p {
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+.slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
 }
 
-.animate-slide-in-right {
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-right {
   animation: slideInRight 0.6s ease-out;
-}
-
-/* Utilidades de espaciado */
-.container-padding {
-  @apply px-4 md:px-8 lg:px-12;
-}
-
-.section-padding {
-  @apply py-16 md:py-24 lg:py-32;
-}
-
-/* Links */
-a {
-  @apply text-blue-600 hover:text-blue-700 transition-colors duration-200;
-}
-
-a.nav-link {
-  @apply text-gray-700 hover:text-blue-600 transition-colors duration-200;
-}
-
-/* Scrollbar personalizado */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-navy);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #143d5c;
 }

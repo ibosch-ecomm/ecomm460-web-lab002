@@ -12,8 +12,8 @@ const HOST = process.env.HOST || '0.0.0.0';
 // Servir archivos estáticos desde dist
 app.use(express.static(join(__dirname, 'dist')));
 
-// Manejar rutas SPA - redirigir todo a index.html
-app.get('*', (req, res) => {
+// Fallback para todas las rutas no encontradas
+app.use((req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'));
 });
 
