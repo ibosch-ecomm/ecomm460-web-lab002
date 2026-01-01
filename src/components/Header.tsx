@@ -73,7 +73,7 @@ export default function Header({ menuItems = [] }: HeaderProps) {
             <div className="flex-shrink-0">
               <a href="/" className="flex items-center">
                 <img 
-                  src="/images/logo-ecomm360.png" 
+                  src="/images/logo-ecomm360-2026.png" 
                   alt="eComm360" 
                   className={`transition-all duration-300 ${
                     isScrolled ? 'h-10' : 'h-12'
