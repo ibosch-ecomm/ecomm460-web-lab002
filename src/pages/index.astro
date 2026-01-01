@@ -7,73 +7,119 @@ import Layout from '../layouts/Layout.astro';
   description="Soluciones eCommerce integradas y automatizadas"
 >
   <!-- Hero -->
-  <section class="pt-32 pb-24 px-4">
-    <div class="max-w-5xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 mb-8">
-        <span class="w-2 h-2 bg-cyan-500 rounded-full"></span>
-        Agencia eCommerce Líder
-      </div>
-      
-      <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-6 tracking-tight">
-        Impulsa tu<br/>
-        <span class="text-blue-900">eCommerce</span>
-      </h1>
-      
-      <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-        Integramos, automatizamos y optimizamos tu tienda online para maximizar resultados
-      </p>
-      
-      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-16">
-        <a href="/contacto" class="px-6 py-3 bg-blue-900 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors">
-          Empezar Ahora
-        </a>
-        <a href="/portfolio" class="px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg font-medium hover:border-gray-400 transition-colors">
-          Ver Casos de Éxito
-        </a>
-      </div>
+  <section class="relative py-20 px-4 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Content -->
+        <div>
+          <div class="inline-block px-4 py-2 bg-white border border-cyan-200 rounded-full text-sm text-cyan-600 font-medium mb-6">
+            TRANSFORMA TU NEGOCIO
+          </div>
+          
+          <h1 class="text-6xl md:text-7xl font-bold mb-6 leading-tight">
+            <span class="text-blue-900">Tu eCommerce<br/>será</span><br/>
+            <span class="text-blue-900">Integrado,</span><br/>
+            <span class="text-blue-900">Automatizado</span><br/>
+            <span class="text-blue-900">y Rentable</span>
+          </h1>
+          
+          <p class="text-lg text-gray-600 mb-8 max-w-xl leading-relaxed">
+            Consultoría y desarrollo especializado en B2B industrial y retail. Conectamos tu ERP, automatizamos procesos y potenciamos tus ventas.
+          </p>
+          
+          <div class="flex flex-wrap gap-4 mb-12">
+            <a href="/servicios" class="px-6 py-3 bg-blue-900 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors">
+              Ver Servicios
+            </a>
+            <a href="/portfolio" class="px-6 py-3 bg-white border-2 border-yellow-400 text-blue-900 rounded-lg font-medium hover:bg-yellow-50 transition-colors">
+              Ver Casos de Éxito
+            </a>
+          </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-gray-200">
-        <div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">500+</div>
-          <div class="text-sm text-gray-600">Proyectos</div>
+          <!-- Partners -->
+          <div class="flex items-center gap-4 text-sm text-gray-500">
+            <span class="font-semibold">PARTNERS:</span>
+            <span>PrestaShop</span>
+            <span>Shopify</span>
+            <span>LogiCommerce</span>
+          </div>
         </div>
-        <div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">15+</div>
-          <div class="text-sm text-gray-600">Años</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">98%</div>
-          <div class="text-sm text-gray-600">Satisfacción</div>
-        </div>
-        <div>
-          <div class="text-3xl font-bold text-gray-900 mb-1">24/7</div>
-          <div class="text-sm text-gray-600">Soporte</div>
+
+        <!-- Right: Floating Cards -->
+        <div class="relative hidden lg:block">
+          <!-- Card 1: Conversión -->
+          <div class="absolute top-10 right-20 bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Conversión</div>
+                <div class="text-2xl font-bold text-green-600">+125%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Integración ERP -->
+          <div class="absolute bottom-20 right-0 bg-white rounded-2xl shadow-lg p-6 border border-gray-100 transform hover:scale-105 transition-transform">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Integración ERP</div>
+                <div class="text-lg font-semibold text-blue-900">Sincronizado</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative gradient blob -->
+          <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-100 to-blue-100 rounded-full blur-3xl opacity-30"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Servicios -->
-  <section class="py-24 px-4 bg-gray-50">
-    <div class="max-w-6xl mx-auto">
+  <section class="py-24 px-4">
+    <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <h2 class="text-4xl font-bold text-gray-900 mb-3">Servicios</h2>
-        <p class="text-lg text-gray-600">Soluciones completas para tu negocio digital</p>
+        <div class="text-sm text-blue-900 font-semibold mb-3 tracking-wide">NUESTROS SERVICIOS</div>
+        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Soluciones Integrales para tu<br/>
+          <span class="text-cyan-500">Crecimiento Digital</span>
+        </h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+          No solo creamos tiendas online, construimos ecosistemas de negocio conectados.
+        </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Servicio 1 -->
-        <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-300 hover:shadow-sm transition-all">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <!-- Ilustración placeholder -->
+          <div class="w-full h-40 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl mb-6 flex items-center justify-center">
+            <svg class="w-16 h-16 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Agencia eCommerce</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">Desarrollo completo de tiendas online con las mejores plataformas del mercado</p>
+          
+          <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Desarrollo eCommerce</h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            Tiendas online robustas y escalables en PrestaShop y Shopify que reflejan tu marca.
+          </p>
           <a href="/agencia-ecommerce" class="inline-flex items-center text-blue-900 font-medium text-sm hover:gap-2 transition-all">
-            Ver más
+            Saber más
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -81,16 +127,25 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Servicio 2 -->
-        <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-300 hover:shadow-sm transition-all">
-          <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-full h-40 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl mb-6 flex items-center justify-center">
+            <svg class="w-16 h-16 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Integración ERP</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">Conecta tu tienda con SAP, Odoo, Business Central y más sistemas empresariales</p>
+          
+          <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7"></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Integración ERP</h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            Sincronización total con SAP, Sage, Odoo y Microsoft Dynamics. Adiós a la entrada manual.
+          </p>
           <a href="/integracion-erp-ecommerce" class="inline-flex items-center text-blue-900 font-medium text-sm hover:gap-2 transition-all">
-            Ver más
+            Saber más
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -98,16 +153,25 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Servicio 3 -->
-        <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-300 hover:shadow-sm transition-all">
-          <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-full h-40 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl mb-6 flex items-center justify-center">
+            <svg class="w-16 h-16 text-blue-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">IA & Automatización</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">Optimiza procesos con inteligencia artificial y automatización avanzada</p>
+          
+          <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Automatización</h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            Optimiza flujos de trabajo, reduce errores y libera a tu equipo de tareas repetitivas.
+          </p>
           <a href="/automatizacion-ecommerce" class="inline-flex items-center text-blue-900 font-medium text-sm hover:gap-2 transition-all">
-            Ver más
+            Saber más
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -115,16 +179,25 @@ import Layout from '../layouts/Layout.astro';
         </div>
 
         <!-- Servicio 4 -->
-        <div class="bg-white border border-gray-200 rounded-2xl p-8 hover:border-gray-300 hover:shadow-sm transition-all">
-          <div class="w-12 h-12 bg-cyan-50 rounded-xl flex items-center justify-center mb-6">
-            <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+          <div class="w-full h-40 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl mb-6 flex items-center justify-center">
+            <svg class="w-16 h-16 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Apps Móviles</h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">Aplicaciones móviles nativas y PWA para iOS y Android</p>
-          <a href="/desarrollo-de-aplicaciones-moviles" class="inline-flex items-center text-blue-900 font-medium text-sm hover:gap-2 transition-all">
-            Ver más
+          
+          <div class="w-10 h-10 bg-cyan-100 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1"></path>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-blue-900 mb-3">Inteligencia Artificial</h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+            Buscadores inteligentes y personalización avanzada para aumentar la conversión.
+          </p>
+          <a href="/inteligencia-artificial-ecommerce" class="inline-flex items-center text-blue-900 font-medium text-sm hover:gap-2 transition-all">
+            Saber más
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
@@ -135,7 +208,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Plataformas -->
-  <section class="py-24 px-4">
+  <section class="py-24 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold text-gray-900 mb-3">Plataformas</h2>
@@ -144,7 +217,7 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {['PrestaShop', 'Shopify', 'VTEX', 'BigCommerce', 'LogiCommerce', 'Sylius'].map(platform => (
-          <div class="border border-gray-200 rounded-xl p-4 text-center hover:border-gray-300 hover:shadow-sm transition-all">
+          <div class="bg-white rounded-xl p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
             <div class="text-sm font-semibold text-gray-900">{platform}</div>
           </div>
         ))}
@@ -153,7 +226,7 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- Casos de Éxito -->
-  <section class="py-24 px-4 bg-gray-50">
+  <section class="py-24 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
         <h2 class="text-4xl font-bold text-gray-900 mb-3">Casos de Éxito</h2>
@@ -161,19 +234,19 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white border border-gray-200 rounded-2xl p-8">
-          <div class="text-5xl font-bold text-blue-900 mb-4">+150%</div>
+        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
+          <div class="text-5xl font-bold text-green-600 mb-4">+150%</div>
           <h3 class="text-lg font-semibold text-gray-900 mb-2">Ferrolan</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Incremento en ventas tras integración ERP y automatización</p>
         </div>
 
-        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
           <div class="text-5xl font-bold text-cyan-600 mb-4">-60%</div>
           <h3 class="text-lg font-semibold text-gray-900 mb-2">Ofiprix</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Reducción en tiempo de gestión con automatización B2B</p>
         </div>
 
-        <div class="bg-white border border-gray-200 rounded-2xl p-8">
+        <div class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow">
           <div class="text-5xl font-bold text-blue-900 mb-4">+200%</div>
           <h3 class="text-lg font-semibold text-gray-900 mb-2">Ramon Soler</h3>
           <p class="text-gray-600 text-sm leading-relaxed">Crecimiento en conversiones con Shopify Plus</p>
@@ -183,15 +256,15 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
   <!-- CTA Final -->
-  <section class="py-32 px-4">
+  <section class="py-32 px-4 bg-gradient-to-br from-blue-900 to-blue-800">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-5xl font-bold text-gray-900 mb-6">
+      <h2 class="text-5xl font-bold text-white mb-6">
         ¿Listo para crecer?
       </h2>
-      <p class="text-xl text-gray-600 mb-10 leading-relaxed">
+      <p class="text-xl text-blue-100 mb-10 leading-relaxed">
         Agenda una consultoría gratuita y descubre cómo podemos transformar tu eCommerce
       </p>
-      <a href="/contacto" class="inline-block px-8 py-4 bg-blue-900 text-white rounded-lg font-medium hover:bg-blue-800 transition-colors">
+      <a href="/contacto" class="inline-block px-8 py-4 bg-white text-blue-900 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
         Contactar Ahora
       </a>
     </div>
@@ -206,7 +279,7 @@ import Layout from '../layouts/Layout.astro';
           <ul class="space-y-3 text-sm">
             <li><a href="/agencia-ecommerce" class="text-gray-600 hover:text-gray-900 transition-colors">Agencia eCommerce</a></li>
             <li><a href="/integracion-erp-ecommerce" class="text-gray-600 hover:text-gray-900 transition-colors">Integración ERP</a></li>
-            <li><a href="/automatizacion-ecommerce" class="text-gray-600 hover:text-gray-900 transition-colors">IA & Automatización</a></li>
+            <li><a href="/automatizacion-ecommerce" class="text-gray-600 hover:text-gray-900 transition-colors">Automatización</a></li>
             <li><a href="/desarrollo-de-aplicaciones-moviles" class="text-gray-600 hover:text-gray-900 transition-colors">Apps Móviles</a></li>
           </ul>
         </div>
