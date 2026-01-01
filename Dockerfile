@@ -15,7 +15,7 @@ RUN pnpm install --frozen-lockfile
 # Copiar código fuente
 COPY . .
 
-# Construir la aplicación
+# Construir la aplicación en modo servidor
 RUN pnpm run build
 
 # Production stage
@@ -26,7 +26,7 @@ WORKDIR /app
 # Instalar pnpm
 RUN npm install -g pnpm
 
-# Copiar archivos de dependencias
+# Copiar package.json y pnpm-lock.yaml
 COPY package.json pnpm-lock.yaml ./
 
 # Instalar solo dependencias de producción
@@ -40,7 +40,8 @@ EXPOSE 3000
 
 # Variables de entorno
 ENV NODE_ENV=production
-ENV GRAPHQL_ENDPOINT=https://web2025.ecomm360.net/graphql
+ENV HOST=0.0.0.0
+ENV PORT=3000
 
 # Comando para iniciar la aplicación
 CMD ["node", "./dist/server/entry.mjs"]
