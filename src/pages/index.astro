@@ -2,64 +2,51 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Inicio - eComm360">
+<Layout 
+  title="Agencia eCommerce | Desarrollo, Integración y Automatización" 
+  description="Transformamos tu negocio con soluciones eCommerce integradas, automatizadas y rentables. Expertos en PrestaShop, Shopify, VTEX y más."
+>
   <!-- Hero Section -->
-  <section class="relative pt-20 pb-32 overflow-hidden">
-    <div class="absolute inset-0 tech-bg" />
-    
-    <div class="relative max-w-7xl mx-auto px-4 md:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Left Content -->
-        <div class="animate-fade-in-up">
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Soluciones de Comercio Electrónico
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-              de Próxima Generación
-            </span>
+  <section class="relative overflow-hidden" style="background: linear-gradient(135deg, rgba(85, 199, 220, 0.08) 0%, rgba(255, 255, 255, 1) 100%);">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 lg:py-32">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Contenido -->
+        <div class="fade-in">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            TRANSFORMA TU NEGOCIO
           </h1>
-          
-          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-            Potencia tu negocio con eComm360. Plataforma integral diseñada para crecer sin límites, con herramientas avanzadas y soporte 24/7.
+          <p class="text-2xl md:text-3xl lg:text-4xl mb-8" style="font-family: 'Sora', sans-serif; color: #646464;">
+            Tu eCommerce será<br />
+            <span style="color: #1B5585;">Integrado</span>, 
+            <span style="color: #1B5585;">Automatizado</span> y 
+            <span style="color: #55C7DC; border: 2px solid #55C7DC; padding: 0 0.5rem; border-radius: 8px; display: inline-block;">Rentable</span>
           </p>
-
           <div class="flex flex-col sm:flex-row gap-4">
-            <button class="btn-primary text-lg">Comenzar Ahora</button>
-            <button class="btn-secondary text-lg">Ver Demo</button>
-          </div>
-
-          <!-- Stats -->
-          <div class="grid grid-cols-3 gap-6 mt-12">
-            <div>
-              <p class="text-3xl font-bold text-blue-600">10K+</p>
-              <p class="text-gray-600 text-sm">Clientes Activos</p>
-            </div>
-            <div>
-              <p class="text-3xl font-bold text-blue-600">$500M+</p>
-              <p class="text-gray-600 text-sm">Volumen Procesado</p>
-            </div>
-            <div>
-              <p class="text-3xl font-bold text-blue-600">99.9%</p>
-              <p class="text-gray-600 text-sm">Disponibilidad</p>
-            </div>
+            <a href="/contacto" class="btn-primary text-lg px-8 py-4">
+              Ver más →
+            </a>
+            <a href="/agencia-ecommerce" class="btn-secondary text-lg px-8 py-4">
+              Nuestros Servicios
+            </a>
           </div>
         </div>
 
-        <!-- Right Visual -->
-        <div class="relative hidden lg:block">
-          <div class="glass-container p-8">
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
-                Pagos
-              </div>
-              <div class="bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
-                Inventario
-              </div>
-              <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
-                Analytics
-              </div>
-              <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl h-32 flex items-center justify-center text-white font-bold">
-                Reportes
-              </div>
+        <!-- Imagen 3D -->
+        <div class="relative slide-in-right">
+          <div class="aspect-square rounded-3xl p-8" style="background: linear-gradient(135deg, rgba(85, 199, 220, 0.1) 0%, rgba(27, 85, 133, 0.05) 100%);">
+            <div class="w-full h-full flex items-center justify-center">
+              <svg viewBox="0 0 200 200" class="w-full h-full">
+                <defs>
+                  <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#55C7DC;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#1B5585;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+                <polygon points="100,50 150,75 150,125 100,150 50,125 50,75" fill="url(#grad1)" opacity="0.8"/>
+                <polygon points="100,50 150,75 100,100 50,75" fill="#55C7DC" opacity="0.9"/>
+                <polygon points="50,75 50,125 100,150 100,100" fill="#1B5585" opacity="0.7"/>
+                <polygon points="150,75 150,125 100,150 100,100" fill="#55C7DC" opacity="0.6"/>
+              </svg>
             </div>
           </div>
         </div>
@@ -67,73 +54,299 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- Features Section -->
-  <section class="py-20 md:py-32 bg-white">
+  <!-- Sobre Nosotros -->
+  <section class="section-padding">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+        Tu Socio Estratégico en la<br />Transformación Digital del eCommerce
+      </h2>
+      <p class="text-lg md:text-xl text-[#646464] leading-relaxed max-w-3xl mx-auto">
+        En <strong style="color: #1B5585;">eComm360</strong> somos expertos en desarrollar soluciones de comercio electrónico que impulsan el crecimiento de tu negocio. 
+        Integramos tecnología, automatización e inteligencia artificial para crear experiencias de compra excepcionales que convierten visitantes en clientes fieles.
+      </p>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section class="section-padding" style="background: linear-gradient(180deg, #FFFFFF 0%, rgba(85, 199, 220, 0.05) 100%);">
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Características Principales
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+          Nuestros Servicios
         </h2>
-        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-          Todo lo que necesitas para gestionar tu tienda online de forma eficiente
+        <p class="text-lg text-[#646464] max-w-2xl mx-auto">
+          Soluciones integrales para llevar tu eCommerce al siguiente nivel
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {[
-          {
-            title: 'Gestión de Productos',
-            description: 'Administra tu catálogo completo con herramientas intuitivas y poderosas',
-            icon: '📦'
-          },
-          {
-            title: 'Procesamiento de Pagos',
-            description: 'Acepta múltiples métodos de pago de forma segura y confiable',
-            icon: '💳'
-          },
-          {
-            title: 'Análisis en Tiempo Real',
-            description: 'Obtén insights valiosos sobre el comportamiento de tus clientes',
-            icon: '📊'
-          },
-          {
-            title: 'Automatización',
-            description: 'Automatiza procesos repetitivos y ahorra tiempo valioso',
-            icon: '⚙️'
-          },
-          {
-            title: 'Integración Fácil',
-            description: 'Conecta con tus herramientas favoritas sin complicaciones',
-            icon: '🔗'
-          },
-          {
-            title: 'Soporte 24/7',
-            description: 'Nuestro equipo siempre está disponible para ayudarte',
-            icon: '🎧'
-          }
-        ].map((feature) => (
-          <div class="glass-container p-8 hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-            <div class="text-4xl mb-4">{feature.icon}</div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-            <p class="text-gray-600">{feature.description}</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Servicio 1 -->
+        <div class="glass-card p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #1B5585 0%, #55C7DC 100%);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+            </svg>
           </div>
-        ))}
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Desarrollo de<br />Tiendas Online
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Creamos tiendas online profesionales y optimizadas para convertir visitantes en clientes.
+          </p>
+          <a href="/agencia-ecommerce" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Leer más →
+          </a>
+        </div>
+
+        <!-- Servicio 2 -->
+        <div class="glass-card p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #1B5585 0%, #55C7DC 100%);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Integración<br />ERP
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Conectamos tu eCommerce con SAP, Odoo, Sage, A3 y otros sistemas empresariales.
+          </p>
+          <a href="/integracion-erp-ecommerce" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Leer más →
+          </a>
+        </div>
+
+        <!-- Servicio 3 -->
+        <div class="glass-card p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #1B5585 0%, #55C7DC 100%);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Automatización<br />de Procesos
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Automatizamos tareas repetitivas para que te enfoques en hacer crecer tu negocio.
+          </p>
+          <a href="/empresa-de-automatizacion-de-procesos" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Leer más →
+          </a>
+        </div>
+
+        <!-- Servicio 4 -->
+        <div class="glass-card p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #1B5585 0%, #55C7DC 100%);">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Implementación<br />de IA
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Incorporamos inteligencia artificial para personalizar la experiencia de compra.
+          </p>
+          <a href="/automatizacion-ecommerce" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Leer más →
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-20 md:py-32 bg-gradient-to-r from-blue-600 to-cyan-500">
+  <!-- Plataformas -->
+  <section class="section-padding">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+          Plataformas CMS
+        </h2>
+        <p class="text-lg text-[#646464] max-w-2xl mx-auto">
+          Trabajamos con las mejores plataformas de eCommerce del mercado
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+        <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
+          <div class="h-16 flex items-center justify-center mb-4">
+            <span class="text-2xl font-bold" style="color: #DF0067;">PrestaShop</span>
+          </div>
+          <p class="text-sm text-[#646464]">Partner Oficial</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
+          <div class="h-16 flex items-center justify-center mb-4">
+            <span class="text-2xl font-bold" style="color: #96BF48;">Shopify</span>
+          </div>
+          <p class="text-sm text-[#646464]">Plus Partner</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
+          <div class="h-16 flex items-center justify-center mb-4">
+            <span class="text-2xl font-bold" style="color: #F71963;">VTEX</span>
+          </div>
+          <p class="text-sm text-[#646464]">Implementador</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
+          <div class="h-16 flex items-center justify-center mb-4">
+            <span class="text-2xl font-bold" style="color: #121118;">BigCommerce</span>
+          </div>
+          <p class="text-sm text-[#646464]">Partner</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
+          <div class="h-16 flex items-center justify-center mb-4">
+            <span class="text-2xl font-bold" style="color: #1B5585;">LogiCommerce</span>
+          </div>
+          <p class="text-sm text-[#646464]">Partner</p>
+        </div>
+
+        <div class="glass-card p-6 text-center hover:scale-105 transition-transform">
+          <div class="h-16 flex items-center justify-center mb-4">
+            <span class="text-2xl font-bold" style="color: #1AB394;">Sylius</span>
+          </div>
+          <p class="text-sm text-[#646464]">Expertos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Casos de Éxito -->
+  <section class="section-padding" style="background: linear-gradient(180deg, #FFFFFF 0%, rgba(85, 199, 220, 0.05) 100%);">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+          Casos de Éxito
+        </h2>
+        <p class="text-lg text-[#646464] max-w-2xl mx-auto">
+          Proyectos que transformaron negocios
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass-card p-8">
+          <div class="h-48 rounded-xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85, 199, 220, 0.1) 0%, rgba(27, 85, 133, 0.05) 100%);">
+            <span class="text-4xl font-bold" style="color: #1B5585;">Ferrolan</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Ferrolan
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Integración completa de eCommerce B2B con SAP Business One, automatizando pedidos y sincronización de stock en tiempo real.
+          </p>
+          <a href="/portfolio" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Ver caso →
+          </a>
+        </div>
+
+        <div class="glass-card p-8">
+          <div class="h-48 rounded-xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85, 199, 220, 0.1) 0%, rgba(27, 85, 133, 0.05) 100%);">
+            <span class="text-4xl font-bold" style="color: #1B5585;">Ofiprix</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Ofiprix
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Desarrollo de tienda online con PrestaShop Enterprise, integración con Odoo y automatización de procesos logísticos.
+          </p>
+          <a href="/portfolio" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Ver caso →
+          </a>
+        </div>
+
+        <div class="glass-card p-8">
+          <div class="h-48 rounded-xl mb-6 flex items-center justify-center" style="background: linear-gradient(135deg, rgba(85, 199, 220, 0.1) 0%, rgba(27, 85, 133, 0.05) 100%);">
+            <span class="text-4xl font-bold" style="color: #1B5585;">Ramon Soler</span>
+          </div>
+          <h3 class="text-xl font-bold mb-3" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+            Ramon Soler
+          </h3>
+          <p class="text-[#646464] mb-4">
+            Migración a Shopify Plus con integración ERP Sage, mejorando la experiencia de usuario y aumentando conversiones un 45%.
+          </p>
+          <a href="/portfolio" class="text-[#55C7DC] hover:text-[#1B5585] font-semibold transition-colors">
+            Ver caso →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-padding">
+    <div class="max-w-4xl mx-auto px-4 md:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style="font-family: 'Sora', sans-serif; color: #1B5585;">
+          Preguntas Frecuentes
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        <details class="glass-card p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center" style="color: #1B5585;">
+            <span>¿Qué hace una agencia eCommerce?</span>
+            <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-4 text-[#646464]">
+            Una agencia eCommerce especializada desarrolla, implementa y optimiza tiendas online completas. Nos encargamos de todo: desde el diseño y desarrollo de la plataforma, hasta la integración con sistemas empresariales (ERP, CRM), automatización de procesos y estrategias de marketing digital.
+          </p>
+        </details>
+
+        <details class="glass-card p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center" style="color: #1B5585;">
+            <span>¿Por qué elegir una agencia especializada en eCommerce?</span>
+            <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-4 text-[#646464]">
+            El eCommerce tiene particularidades técnicas y estratégicas que requieren conocimiento especializado. Trabajamos exclusivamente en comercio electrónico, lo que nos permite ofrecer soluciones probadas, optimizadas y actualizadas con las últimas tendencias del sector.
+          </p>
+        </details>
+
+        <details class="glass-card p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center" style="color: #1B5585;">
+            <span>¿Qué plataformas de eCommerce utilizan?</span>
+            <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-4 text-[#646464]">
+            Somos partners oficiales de PrestaShop, Shopify Plus, VTEX, BigCommerce, LogiCommerce y Sylius. Analizamos las necesidades de cada cliente para recomendar la plataforma más adecuada según su modelo de negocio, presupuesto y objetivos de crecimiento.
+          </p>
+        </details>
+
+        <details class="glass-card p-6 group">
+          <summary class="font-bold text-lg cursor-pointer list-none flex justify-between items-center" style="color: #1B5585;">
+            <span>¿Cuánto tiempo toma implementar una tienda online?</span>
+            <svg class="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-4 text-[#646464]">
+            El tiempo de implementación varía según la complejidad del proyecto. Una tienda básica puede estar lista en 4-6 semanas, mientras que proyectos con integraciones ERP, automatizaciones complejas o desarrollos a medida pueden requerir 3-6 meses. Siempre trabajamos con cronogramas claros y entregas parciales.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="section-padding" style="background: linear-gradient(135deg, #1B5585 0%, #55C7DC 100%);">
     <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-        ¿Listo para transformar tu negocio?
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white" style="font-family: 'Sora', sans-serif;">
+        ¿Listo para transformar tu eCommerce?
       </h2>
-      <p class="text-lg text-blue-100 mb-8">
-        Únete a miles de empresas que ya confían en eComm360
+      <p class="text-xl text-white text-opacity-90 mb-8">
+        Agenda una consultoría gratuita y descubre cómo podemos ayudarte a crecer
       </p>
-      <button class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-        Solicitar Demo Gratuita
-      </button>
+      <a href="/contacto" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-[#1B5585] bg-white rounded-xl hover:bg-opacity-90 transition-all duration-300 hover:scale-105">
+        Contactar Ahora →
+      </a>
     </div>
   </section>
 </Layout>
