@@ -7,7 +7,7 @@ export const graphqlClient = new GraphQLClient(endpoint);
 // Queries
 export const GET_MENU_ITEMS = gql`
   query GetMenuItems {
-    menus(first: 1, where: { name: "Main Menu" }) {
+    menus(first: 1, where: { slug: "menu-principal" }) {
       edges {
         node {
           menuItems(first: 100) {

@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Header from '../components/Header';
+import { getMenuItems } from '../lib/graphql';
 
 interface Props {
   title: string;
@@ -9,6 +10,17 @@ interface Props {
 }
 
 const { title, description = 'eComm360 - Soluciones de Comercio Electrónico', image } = Astro.props;
+
+// Obtener items del menú desde WordPress
+let menuItems = [];
+try {
+  const menuData = await getMenuItems();
+  if (menuData?.menus?.edges?.[0]?.node?.menuItems?.edges) {
+    menuItems = menuData.menus.edges[0].node.menuItems.edges.map(({ node }) => node);
+  }
+} catch (error) {
+  console.error('Error loading menu:', error);
+}
 ---
 
 <!doctype html>
@@ -42,12 +54,13 @@ const { title, description = 'eComm360 - Soluciones de Comercio Electrónico', i
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   </head>
   <body class="antialiased">
-    <Header client:load />
+    <Header client:load menuItems={menuItems} />
     
     <main>
       <slot />
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 md:py-16">
       <div class="max-w-7xl mx-auto px-4 md:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -66,27 +79,27 @@ const { title, description = 'eComm360 - Soluciones de Comercio Electrónico', i
           <div>
             <h4 class="font-semibold mb-4">Producto</h4>
             <ul class="space-y-2 text-sm text-gray-400">
-              <li><a href="#" class="hover:text-white transition-colors">Características</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Precios</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Seguridad</a></li>
+              <li><a href="/servicios" class="hover:text-white transition-colors">Servicios</a></li>
+              <li><a href="/soluciones" class="hover:text-white transition-colors">Soluciones</a></li>
+              <li><a href="/plataformas-ecommerce" class="hover:text-white transition-colors">Plataformas</a></li>
             </ul>
           </div>
 
           <div>
             <h4 class="font-semibold mb-4">Empresa</h4>
             <ul class="space-y-2 text-sm text-gray-400">
-              <li><a href="#" class="hover:text-white transition-colors">Sobre nosotros</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Contacto</a></li>
+              <li><a href="/empresa-ecommerce" class="hover:text-white transition-colors">Sobre nosotros</a></li>
+              <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+              <li><a href="/contacto" class="hover:text-white transition-colors">Contacto</a></li>
             </ul>
           </div>
 
           <div>
             <h4 class="font-semibold mb-4">Legal</h4>
             <ul class="space-y-2 text-sm text-gray-400">
-              <li><a href="#" class="hover:text-white transition-colors">Privacidad</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Términos</a></li>
-              <li><a href="#" class="hover:text-white transition-colors">Cookies</a></li>
+              <li><a href="/politica-de-privacidad" class="hover:text-white transition-colors">Privacidad</a></li>
+              <li><a href="/aviso-legal" class="hover:text-white transition-colors">Aviso Legal</a></li>
+              <li><a href="/politica-de-cookies" class="hover:text-white transition-colors">Cookies</a></li>
             </ul>
           </div>
         </div>
@@ -96,19 +109,13 @@ const { title, description = 'eComm360 - Soluciones de Comercio Electrónico', i
           <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>&copy; 2026 eComm360. Todos los derechos reservados.</p>
             <div class="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" class="hover:text-white transition-colors">Twitter</a>
-              <a href="#" class="hover:text-white transition-colors">LinkedIn</a>
-              <a href="#" class="hover:text-white transition-colors">GitHub</a>
+              <a href="https://twitter.com/ecomm360" target="_blank" rel="noopener" class="hover:text-white transition-colors">Twitter</a>
+              <a href="https://linkedin.com/company/ecomm360" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a>
+              <a href="https://github.com/ecomm360" target="_blank" rel="noopener" class="hover:text-white transition-colors">GitHub</a>
             </div>
           </div>
         </div>
       </div>
     </footer>
-
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-    </style>
   </body>
 </html>
